@@ -1,18 +1,22 @@
 import React from "react";
+import "./index.css"; // Importa los estilos
 
-const SpotifyPlayer = ({ playlistId }) => {
-  const embedUrl = `https://open.spotify.com/embed/playlist/${playlistId}`;
-
+const SpotifyPlayer = () => {
   return (
-    <iframe
-      src={embedUrl}
-      width="300"
-      height="380"
-      frameBorder="0"
-      allow="encrypted-media"
-      title="Spotify Player"
-    ></iframe>
+    <div className="spotify-container">
+      <iframe
+        style={{ borderRadius: "12px" }}
+        src="https://open.spotify.com/embed/artist/6U6IOHuRO6CQ07uNc7s45e?utm_source=generator"
+        width="100%"
+        height="80"
+        frameBorder="0"
+        allowFullScreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+      ></iframe>
+    </div>
   );
 };
 
 export default SpotifyPlayer;
+

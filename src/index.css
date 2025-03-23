@@ -59,3 +59,41 @@ code {
   overflow: hidden;
 }
 
+
+.spotify-container {
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 20px !important; /* Mueve el botón a la esquina inferior izquierda */
+  background-color: #000;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 9999 !important; /* Asegura que esté sobre otros elementos */
+}
+
+
+
+.spotify-iframe {
+  border-radius: 10px;
+}
+
+
+.spotify-login-btn {
+  position: fixed; /* Fija la posición */
+  bottom: 20px; /* Lo ubica en la parte inferior */
+  left: 10%; /* Lo centra horizontalmente */
+  transform: translateX(-50%); /* Ajusta el centrado exacto */
+  padding: 10px 20px;
+  background-color: #1DB954;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 25px;
+  transition: background 0.3s ease;
+}
+
+.spotify-login-btn:hover {
+  background-color: #1aa34a;
+}
+
+

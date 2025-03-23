@@ -48,9 +48,11 @@ function App() {
 
       {/* Botón de inicio de sesión si el usuario no está autenticado */}
       {!token && (
-        <a href={loginUrl} style={{ position: "fixed", bottom: 20, right: 20 }}>
-          Iniciar sesión con Spotify
-        </a>
+      <a href={loginUrl} className="spotify-login-btn">
+      Iniciar sesión con Spotify
+      </a>
+    
+         
       )}
     </>
   );
