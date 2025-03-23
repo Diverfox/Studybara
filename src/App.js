@@ -1,17 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Timer from "./Timer";
 import OptionsModal from "./OptionsModal";
 import Sidebar from "./Sidebar";
+import { getTokenFromUrl, loginUrl } from "./spotify";
+import SpotifyPlayer from "./SpotifyPlayer"; // Mantén solo la correcta
+
+
 
 function App() {
   const [focusTime, setFocusTime] = useState(25 * 60);
   const [breakTime, setBreakTime] = useState(5 * 60);
   const [showModal, setShowModal] = useState(false); // Estado para abrir/cerrar el modal
+  const [token, setToken] = useState(null);
+  const playlistId = "1e7f1e4de724441883f5f6abd5b780d8"; // ID de tu playlist
+
+  useEffect(() => {
+    const _token = getTokenFromUrl().access_token;
+    window.location.hash = ""; // Limpiar el token de la URL
+    if (_token) setToken(_token);
+  }, []);
 
   return (
     <>
-          {/* Sidebar */}
-          <Sidebar />
+      {/* Sidebar */}
+      <Sidebar />
+
       <div>
         <Timer focusTime={focusTime} breakTime={breakTime} />
 
@@ -28,7 +41,17 @@ function App() {
         {!showModal && (
           <button onClick={() => setShowModal(true)}>⚙ Opciones</button>
         )}
+
+        {/* Mostrar el reproductor de Spotify si el usuario está autenticado */}
+        {token && <SpotifyPlayer playlistId={playlistId} />}
       </div>
+
+      {/* Botón de inicio de sesión si el usuario no está autenticado */}
+      {!token && (
+        <a href={loginUrl} style={{ position: "fixed", bottom: 20, right: 20 }}>
+          Iniciar sesión con Spotify
+        </a>
+      )}
     </>
   );
 }
