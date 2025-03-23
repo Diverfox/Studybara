@@ -79,10 +79,10 @@ code {
 
 
 .spotify-login-btn {
-  position: fixed; /* Fija la posición */
-  bottom: 20px; /* Lo ubica en la parte inferior */
-  left: 20%; /* Lo centra horizontalmente */
-  transform: translateX(-50%); /* Ajusta el centrado exacto */
+  position: fixed; 
+  bottom: 20px; 
+  left: 10%; 
+  transform: translateX(-50%); 
   padding: 10px 20px;
   background-color: #1DB954;
   color: white;
