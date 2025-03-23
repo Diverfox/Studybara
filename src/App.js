@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Timer from "./Timer";
 import OptionsModal from "./OptionsModal";
+import Sidebar from "./Sidebar";
 
 function App() {
   const [focusTime, setFocusTime] = useState(25 * 60);
@@ -9,6 +10,8 @@ function App() {
 
   return (
     <>
+          {/* Sidebar */}
+          <Sidebar />
       <div>
         <Timer focusTime={focusTime} breakTime={breakTime} />
 
