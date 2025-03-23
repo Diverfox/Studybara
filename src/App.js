@@ -12,7 +12,8 @@ function App() {
   const [breakTime, setBreakTime] = useState(5 * 60);
   const [showModal, setShowModal] = useState(false); // Estado para abrir/cerrar el modal
   const [isFullscreen, setIsFullscreen] = useState(false);
-
+  const [token, setToken] = useState(null);
+  const playlistId = "1e7f1e4de724441883f5f6abd5b780d8"; // ID de tu playlist
 
     // Función para alternar pantalla completa
     const toggleFullscreen = () => {
