@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Studybara/static/css/main.808ed103.css",
+    "main.js": "/Studybara/static/js/main.3c394e5d.js",
+    "static/js/453.18fc0628.chunk.js": "/Studybara/static/js/453.18fc0628.chunk.js",
+    "index.html": "/Studybara/index.html",
+    "main.808ed103.css.map": "/Studybara/static/css/main.808ed103.css.map",
+    "main.3c394e5d.js.map": "/Studybara/static/js/main.3c394e5d.js.map",
+    "453.18fc0628.chunk.js.map": "/Studybara/static/js/453.18fc0628.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.808ed103.css",
+    "static/js/main.3c394e5d.js"
+  ]
+}
