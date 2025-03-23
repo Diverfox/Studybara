@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css"; // Importa los estilos
+import "../styles/index.css";
 
 const SpotifyPlayer = () => {
   return (

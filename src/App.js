@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import Timer from "./Timer";
+import Timer from "./components/Timer";
 import OptionsModal from "./OptionsModal";
 import Sidebar from "./Sidebar";
-import { getTokenFromUrl, loginUrl } from "./spotify";
-import SpotifyPlayer from "./SpotifyPlayer"; // Mantén solo la correcta
+import { getTokenFromUrl, loginUrl } from "./utils/spotify";
+import SpotifyPlayer from "./components/SpotifyPlayer"; // Mantén solo la correcta
 
 
 

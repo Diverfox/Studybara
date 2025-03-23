@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import GeneralSettings from "./GeneralSettings";
-import ClockSettings from "./ClockSettings";
-import FeedbackSettings from "./FeedbackSettings";
+import GeneralSettings from "./components/GeneralSettings";
+import ClockSettings from "./components/ClockSettings";
+import FeedbackSettings from "./components/FeedbackSettings";
 
 function OptionsModal({ setFocusTime, setBreakTime, onClose }) {
   const [activeTab, setActiveTab] = useState("general"); // Estado para la pestaña activa
