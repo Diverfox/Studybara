@@ -96,4 +96,24 @@ code {
   background-color: #1aa34a;
 }
 
+/* Estilos para los botones en la esquina inferior derecha */
+.corner-buttons-container {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  display: flex !important;
+  gap: 10px;
+  z-index: 999 !important;
+}
 
+.corner-button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #ff0000;
+  background-color: #ff8b8b;
+}
+
+.corner-button:hover {
+  background-color: #f5a2a2;
+}
