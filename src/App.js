@@ -1,7 +1,11 @@
-import { useState } from "react";
-import Timer from "./Timer";
+import { useState, useEffect } from "react";
+import Timer from "./components/Timer";
 import OptionsModal from "./OptionsModal";
 import Sidebar from "./Sidebar";
+import { getTokenFromUrl, loginUrl } from "./utils/spotify";
+import SpotifyPlayer from "./components/SpotifyPlayer"; // Mantén solo la correcta
+
+
 
 function App() {
   const [focusTime, setFocusTime] = useState(25 * 60);
@@ -45,7 +49,19 @@ function App() {
         {!showModal && (
           <button onClick={() => setShowModal(true)}>⚙ Opciones</button>
         )}
+
+        {/* Mostrar el reproductor de Spotify si el usuario está autenticado */}
+        {token && <SpotifyPlayer playlistId={playlistId} />}
       </div>
+
+      {/* Botón de inicio de sesión si el usuario no está autenticado */}
+      {!token && (
+      <a href={loginUrl} className="spotify-login-btn">
+      Iniciar sesión con Spotify
+      </a>
+    
+         
+      )}
     </>
   );
 }
