@@ -12,12 +12,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f4f4f4; /* Color de fondo claro para evitar fatiga visual */
-  color: #333; /* Color de texto principal */
+  color: #f8f8f8; /* Color de texto principal */
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  background-image: url("../assets/images/fondochill.jpg"); /* Ruta de la imagen */
+  background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
 
 button {
@@ -96,4 +97,52 @@ code {
   background-color: #1aa34a;
 }
 
+/* Estilos para los botones en la esquina inferior derecha */
+.corner-buttons-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 999;
+}
 
+.corner-button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #0ceb5a;
+  background-color: #1DB954;
+}
+
+.corner-button:hover {
+  background-color: #1aa34a;
+}
+
+.home-header {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 100px; /* Ajusta el tamaño según necesites */
+  height: auto;
+  margin-right: 10px;
+  border-radius: 10%;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
