@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { SettingsProvider } from "./context/SettingsContext";
 import Home from "./pages/Home";
 import Materias from "./pages/Materias";
-import Sidebar from "./components/Sidebar";
 import Layout from "./components/Layout"; // Nuevo componente
 
 function App() {
