@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
-import "../styles/Timer.css"; // Importamos el archivo CSS separado
+import { useState, useEffect, useContext } from "react";
+import { SettingsContext } from "../context/SettingsContext";
 
-function Timer({ focusTime, breakTime }) {
-  const [time, setTime] = useState(focusTime || 25 * 60);
+function Timer() {
+  const { focusTime, breakTime } = useContext(SettingsContext);
+  const [time, setTime] = useState(focusTime);
   const [isRunning, setIsRunning] = useState(false);
-  const [isFocusMode, setIsFocusMode] = useState(true); // Para rastrear si estamos en modo Focus o Break
+  const [isFocusMode, setIsFocusMode] = useState(true);
 
   useEffect(() => {
     let timer;
@@ -19,8 +20,8 @@ function Timer({ focusTime, breakTime }) {
   }, [isRunning]);
 
   useEffect(() => {
-    setTime(focusTime);
-  }, [focusTime]);
+    setTime(isFocusMode ? focusTime : breakTime);
+  }, [focusTime, breakTime, isFocusMode]);
 
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
@@ -30,47 +31,43 @@ function Timer({ focusTime, breakTime }) {
 
   return (
     <div className="timer-container">
-      {/* Botones de Focus y Break arriba */}
+      {/* Botones Focus y Break arriba del temporizador */}
       <div className="mode-buttons">
-        <button
+        <button 
+          className={isFocusMode ? "active" : ""} 
           onClick={() => {
             setIsRunning(false);
-            setTime(focusTime);
             setIsFocusMode(true);
+            setTime(focusTime);
           }}
-          className={isFocusMode ? "active" : ""}
         >
           Focus
         </button>
-
-        <button
+        <button 
+          className={!isFocusMode ? "active" : ""} 
           onClick={() => {
             setIsRunning(false);
-            setTime(breakTime);
             setIsFocusMode(false);
+            setTime(breakTime);
           }}
-          className={!isFocusMode ? "active" : ""}
         >
           Break
         </button>
       </div>
 
-      {/* Cronómetro */}
+      {/* Temporizador */}
       <h1 className="timer-display">{formatTime(time)}</h1>
 
-      {/* Botones de Start y Reset abajo */}
+      {/* Botones Start/Pausa y Reiniciar debajo del temporizador */}
       <div className="control-buttons">
         <button onClick={() => setIsRunning(!isRunning)}>
           {isRunning ? "Pausar" : "Start"}
         </button>
-
-        <button
-          onClick={() => {
-            setIsRunning(false);
-            setTime(isFocusMode ? focusTime : breakTime);
-          }}
-        >
-          Reset
+        <button onClick={() => {
+          setIsRunning(false);
+          setTime(isFocusMode ? focusTime : breakTime);
+        }}>
+          Reiniciar
         </button>
       </div>
     </div>

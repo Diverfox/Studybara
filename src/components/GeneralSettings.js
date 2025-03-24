@@ -1,27 +1,37 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { SettingsContext } from "../context/SettingsContext";
 
 const GeneralSettings = () => {
-  const [focusTime, setFocusTime] = useState(25);
-  const [breakTime, setBreakTime] = useState(5);
-  const [usePomodoro, setUsePomodoro] = useState(false);
+  const { focusTime, setFocusTime, breakTime, setBreakTime, background, setBackground } =
+    useContext(SettingsContext);
+
+  const backgrounds = ["default.jpg", "forest.jpg", "ocean.jpg", "city.jpg", "mountains.jpg"];
 
   return (
     <div>
       <h3>Time</h3>
       <label>Focus</label>
-      <input type="number" value={focusTime} onChange={(e) => setFocusTime(e.target.value)} />
-      
+      <input
+        type="number"
+        value={focusTime / 60}
+        onChange={(e) => setFocusTime(e.target.value * 60)}
+      />
+
       <label>Break</label>
-      <input type="number" value={breakTime} onChange={(e) => setBreakTime(e.target.value)} />
-      
-      <label>
-        <input 
-          type="checkbox" 
-          checked={usePomodoro} 
-          onChange={() => setUsePomodoro(!usePomodoro)} 
-        />
-        Use the Pomodoro sequence
-      </label>
+      <input
+        type="number"
+        value={breakTime / 60}
+        onChange={(e) => setBreakTime(e.target.value * 60)}
+      />
+
+      <h3>Background</h3>
+      <select value={background} onChange={(e) => setBackground(e.target.value)}>
+        {backgrounds.map((bg) => (
+          <option key={bg} value={bg}>
+            {bg}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };

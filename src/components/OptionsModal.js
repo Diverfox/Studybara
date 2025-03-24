@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import GeneralSettings from "./GeneralSettings";
 import ClockSettings from "./ClockSettings";
 import FeedbackSettings from "./FeedbackSettings";
-import "../styles/Options.css"; // Importa el CSS externo
+import "../styles/Options.css";
 
 function OptionsModal({ setFocusTime, setBreakTime, onClose }) {
   const [activeTab, setActiveTab] = useState("general");
@@ -21,8 +21,8 @@ function OptionsModal({ setFocusTime, setBreakTime, onClose }) {
   };
 
   return (
-    <div className="overlay">
-      <div className="modal">
+    <div className="opciones-overlay">
+      <div className="opciones-modal">
         <h2>Opciones</h2>
         <button onClick={onClose} className="close-button">Cerrar</button>
 
