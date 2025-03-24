@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import Timer from "../components/Timer";
 import OptionsModal from "../components/OptionsModal";
-import { getTokenFromUrl, loginUrl } from "../utils/spotify";
 import SpotifyPlayer from "../components/SpotifyPlayer";
+import { loginUrl, getTokenFromUrl, getStoredToken } from "../utils/spotify";
 import logo from "../assets/images/capigojo.jpg";
 
 function Home() {
@@ -13,7 +13,7 @@ function Home() {
   const [token, setToken] = useState(null);
   const playlistId = "1e7f1e4de724441883f5f6abd5b780d8";
 
-  // Función para alternar pantalla completa
+  // Alternar pantalla completa
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
@@ -24,6 +24,26 @@ function Home() {
     }
   };
 
+  useEffect(() => {
+    const _token = getTokenFromUrl();
+    if (_token) {
+      setToken(_token);
+    }
+  }, []);
+
+  useEffect(() => {
+    const storedToken = getStoredToken();
+    if (storedToken) {
+      setToken(storedToken);
+    } else {
+      const _token = getTokenFromUrl();
+      if (_token) {
+        setToken(_token);
+      }
+    }
+  }, []);
+  
+
   return (
     <div>
       <div className="home-header">
@@ -33,7 +53,7 @@ function Home() {
 
       <Timer focusTime={focusTime} breakTime={breakTime} />
 
-      {/* Mostrar modal si showModal es true */}
+      {/* Modal de opciones */}
       {showModal && (
         <OptionsModal
           setFocusTime={setFocusTime}
@@ -49,17 +69,13 @@ function Home() {
             ⚙
           </button>
         )}
-
         <button onClick={toggleFullscreen} className="corner-button">
           {isFullscreen ? "🔽" : "⛶"}
         </button>
       </div>
 
       {/* Mostrar el reproductor de Spotify si el usuario está autenticado */}
-      {token && <SpotifyPlayer playlistId={playlistId} />}
-
-      {/* Botón de inicio de sesión si el usuario no está autenticado */}
-      {!token && (
+      {token ? <SpotifyPlayer playlistId={playlistId} /> : (
         <a href={loginUrl} className="spotify-login-btn">
           Iniciar sesión con Spotify
         </a>

@@ -5,12 +5,12 @@ const SpotifyPlayer = () => {
   return (
     <div className="spotify-container">
       <iframe
+        title="Spotify Player"
         style={{ borderRadius: "12px" }}
-        src="https://open.spotify.com/embed/artist/6U6IOHuRO6CQ07uNc7s45e?utm_source=generator"
+        src="https://open.spotify.com/embed/album/1nMHkGDJwTvoW3LTTdUVwA?utm_source=generator&theme=0"
         width="100%"
-        height="80"
+        height="152"
         frameBorder="0"
-        allowFullScreen=""
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
       ></iframe>
