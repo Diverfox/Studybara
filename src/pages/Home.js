@@ -13,6 +13,7 @@ function Home() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [token, setToken] = useState(null);
   const [musicSource, setMusicSource] = useState("spotify");
+  const [showMusicMenu, setShowMusicMenu] = useState(false);
 
   useEffect(() => {
     const storedToken = getStoredToken();
@@ -34,10 +35,6 @@ function Home() {
       document.exitFullscreen();
       setIsFullscreen(false);
     }
-  };
-
-  const toggleMusicSource = () => {
-    setMusicSource((prev) => (prev === "spotify" ? "youtube" : "spotify"));
   };
 
   return (
@@ -68,9 +65,17 @@ function Home() {
           {isFullscreen ? "🔽" : "⛶"}
         </button>
 
-        <button onClick={toggleMusicSource} className="corner-button">
-          🎵
-        </button>
+        <div className="music-menu-container">
+          <button onClick={() => setShowMusicMenu(!showMusicMenu)} className="corner-button">
+            🎵
+          </button>
+          {showMusicMenu && (
+            <div className="music-menu">
+              <button onClick={() => { setMusicSource("spotify"); setShowMusicMenu(false); }}>Spotify</button>
+              <button onClick={() => { setMusicSource("youtube"); setShowMusicMenu(false); }}>YouTube</button>
+            </div>
+          )}
+        </div>
       </div>
 
       {musicSource === "spotify" ? (
