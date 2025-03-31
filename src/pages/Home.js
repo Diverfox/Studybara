@@ -4,38 +4,42 @@ import OptionsModal from "../components/OptionsModal";
 import SpotifyPlayer from "../components/SpotifyPlayer";
 import YouTubePlayer from "../components/YouTubePlayer";
 import logo from "../assets/images/capigojo.jpg";
-import { loginUrl, getTokenFromUrl, getStoredToken } from "../utils/spotify";
+import { loginUrl as spotifyLoginUrl, getTokenFromUrl as getSpotifyToken, getStoredToken as getStoredSpotifyToken } from "../utils/Spotify.js";
+import { youtubeLoginUrl, getYouTubeTokenFromUrl, getStoredYouTubeToken, youtubeLogout } from "../utils/YouTube.js";
 
 function Home() {
   const [focusTime, setFocusTime] = useState(25 * 60);
   const [breakTime, setBreakTime] = useState(5 * 60);
   const [showModal, setShowModal] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [token, setToken] = useState(null);
   const [musicSource, setMusicSource] = useState("spotify");
   const [showMusicMenu, setShowMusicMenu] = useState(false);
+  const [spotifyToken, setSpotifyToken] = useState(null);
+  const [youtubeToken, setYouTubeToken] = useState(null);
 
   useEffect(() => {
-    const storedToken = getStoredToken();
-    if (storedToken) {
-      setToken(storedToken);
+    // Manejo de sesión de Spotify
+    const storedSpotifyToken = getStoredSpotifyToken();
+    if (storedSpotifyToken) {
+      setSpotifyToken(storedSpotifyToken);
     } else {
-      const _token = getTokenFromUrl();
-      if (_token) {
-        setToken(_token);
+      const _spotifyToken = getSpotifyToken();
+      if (_spotifyToken) {
+        setSpotifyToken(_spotifyToken);
+      }
+    }
+
+    // Manejo de sesión de YouTube
+    const storedYouTubeToken = getStoredYouTubeToken();
+    if (storedYouTubeToken) {
+      setYouTubeToken(storedYouTubeToken);
+    } else {
+      const _youtubeToken = getYouTubeTokenFromUrl();
+      if (_youtubeToken) {
+        setYouTubeToken(_youtubeToken);
       }
     }
   }, []);
-
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-      setIsFullscreen(true);
-    } else {
-      document.exitFullscreen();
-      setIsFullscreen(false);
-    }
-  };
 
   return (
     <div>
@@ -61,7 +65,7 @@ function Home() {
           </button>
         )}
 
-        <button onClick={toggleFullscreen} className="corner-button">
+        <button onClick={() => setIsFullscreen(!isFullscreen)} className="corner-button">
           {isFullscreen ? "🔽" : "⛶"}
         </button>
 
@@ -79,9 +83,20 @@ function Home() {
       </div>
 
       {musicSource === "spotify" ? (
-        token ? <SpotifyPlayer /> : <a href={loginUrl} className="spotify-login-btn">Iniciar sesión con Spotify</a>
+        spotifyToken ? (
+          <SpotifyPlayer />
+        ) : (
+          <a href={spotifyLoginUrl} className="spotify-login-btn">Iniciar sesión con Spotify</a>
+        )
       ) : (
-        <YouTubePlayer playlistId="PLMC9KNkIncKseYxDN2niH6glGRWKsLtde" />
+        youtubeToken ? (
+          <>
+            <YouTubePlayer />
+            <button onClick={youtubeLogout} className="logout-btn">Cerrar sesión de YouTube</button>
+          </>
+        ) : (
+          <a href={youtubeLoginUrl} className="youtube-login-btn">Iniciar sesión con YouTube</a>
+        )
       )}
     </div>
   );

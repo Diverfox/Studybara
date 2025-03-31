@@ -1,48 +1,43 @@
-import { useState, useEffect } from "react";
-import { fetchYouTubeVideos } from "../utils/youtube";
+import React, { useState, useEffect } from "react";
+import "../styles/YouTube.css";
 
-const YouTubePlayer = ({ playlistId }) => {
-  const [videos, setVideos] = useState([]);
-  const [currentVideo, setCurrentVideo] = useState(null);
 
-  useEffect(() => {
-    const loadVideos = async () => {
-      const videoList = await fetchYouTubeVideos(playlistId);
-      setVideos(videoList);
-      if (videoList.length > 0) {
-        setCurrentVideo(videoList[0].id);
-      }
-    };
 
-    loadVideos();
-  }, [playlistId]);
+const YouTubePlayer = () => {
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const togglePlay = () => {
+    const iframe = document.getElementById("youtube-iframe");
+    const player = iframe.contentWindow;
+    if (isPlaying) {
+      player.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
+    } else {
+      player.postMessage('{"event":"command","func":"playVideo","args":""}', "*");
+    }
+    setIsPlaying(!isPlaying);
+  };
 
   return (
-    <div className="youtube-player">
-      {currentVideo ? (
-        <iframe
-          title="YouTube Video"
-          width="100%"
-          height="300"
-          src={`https://www.youtube.com/embed/${currentVideo}`}
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        ></iframe>
-      ) : (
-        <p>Cargando videos...</p>
-      )}
-
-      <div className="video-thumbnails">
-        {videos.map((video) => (
-          <img
-            key={video.id}
-            src={video.thumbnail}
-            alt={video.title}
-            onClick={() => setCurrentVideo(video.id)}
-            className="thumbnail"
-          />
-        ))}
+    <div className="music-card">
+      <iframe
+        id="youtube-iframe"
+        width="560"
+        height="315"
+        src="https://www.youtube-nocookie.com/embed/bPG90gwE47M?enablejsapi=1&autoplay=1"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+      ></iframe>
+      <div className="music-info">
+        <p className="music-title">lofi hip hop radio 🎵 beats to relax/study to</p>
+        <div className="music-controls">
+          <button>⏪</button>
+          <button onClick={togglePlay}>{isPlaying ? "⏸" : "▶"}</button>
+          <button>⏩</button>
+          <button>⋯</button>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,90 @@
+.music-card {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    /*backdrop-filter: blur(10px);*/
+    border-radius: 15px;
+    padding: 10px;
+    width: 400px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+
+  
+  .music-card iframe {
+    width: 150px;
+    height: 80px;
+    border-radius: 10px;
+  }
+  
+  .music-info {
+    flex: 1;
+    color: white;
+    padding-left: 10px;
+  }
+  
+  .music-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .music-controls {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .music-controls button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .music-controls button:hover {
+    color: #1db954;
+  }
+  
+  .youtube-login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff0000, #b31217);
+    color: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .youtube-login-box {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    border-radius: 10px;
+    /*backdrop-filter: blur(10px);*/
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .youtube-login-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .youtube-login-btn {
+    background-color: white;
+    color: #ff0000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .youtube-login-btn:hover {
+    background-color: #ffcccc;
+  }
