@@ -1,17 +1,27 @@
+/* Paleta de colores oscuros mejorada */
+:root {
+  --primary-bg: #1e1e1e;
+  --secondary-bg: #252525;
+  --accent-color: #ff4f4f;
+  --text-color: #e0e0e0;
+  --link-color: #61dafb;
+  --hover-link-color: #ff9f9f;
+}
+
+body {
+  background: var(--primary-bg) url("../assets/images/fondochill.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
   position: relative;
   z-index: 1;
 }
-
-body {
-  background-image: url("../assets/images/fondochill.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
 
 .App-logo {
   height: 40vmin;
@@ -25,18 +35,25 @@ body {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--secondary-bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--text-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.App-link:hover {
+  color: var(--hover-link-color);
 }
 
 @keyframes App-logo-spin {
@@ -47,12 +64,3 @@ body {
     transform: rotate(360deg);
   }
 }
-
-body {
-  background-image: url("../assets/images/fondochill.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
