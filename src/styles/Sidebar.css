@@ -10,14 +10,26 @@
     cursor: pointer;
     z-index: 1001;
   }
-  
+
+  /* Sidebar.css */
+.overlay {
+  /* asegúrate de tener esto corregido */
+  background-color: rgba(0, 0, 0, 0.5); /* sombra oscura */
+  z-index: 1000;
+}
+
+.modal {
+  z-index: 1001;
+}
+
+
   .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(219, 52, 52, 0)5;
+    background-color: rgba(219, 52, 52, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;

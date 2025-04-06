@@ -3,7 +3,8 @@ import Timer from "../components/Timer";
 import OptionsModal from "../components/OptionsModal";
 import SpotifyPlayer from "../components/SpotifyPlayer";
 import YouTubePlayer from "../components/YouTubePlayer";
-import logo from "../assets/images/capigojo.jpg";
+import logo from "../assets/images/coffee-bara-capybara.gif";
+import "../styles/Home.css";
 import { loginUrl as spotifyLoginUrl, getTokenFromUrl as getSpotifyToken, getStoredToken as getStoredSpotifyToken } from "../utils/Spotify.js";
 import { youtubeLoginUrl, getYouTubeTokenFromUrl, getStoredYouTubeToken, youtubeLogout } from "../utils/YouTube.js";
 
@@ -42,14 +43,14 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="home-container">
       <div className="home-header">
         <img src={logo} alt="Studybara Logo" className="logo" />
         <h1 className="title">Studybara</h1>
       </div>
-
+  
       <Timer focusTime={focusTime} breakTime={breakTime} />
-
+  
       {showModal && (
         <OptionsModal
           setFocusTime={setFocusTime}
@@ -57,18 +58,18 @@ function Home() {
           onClose={() => setShowModal(false)}
         />
       )}
-
+  
       <div className="corner-buttons-container">
         {!showModal && (
           <button onClick={() => setShowModal(true)} className="corner-button">
             ⚙
           </button>
         )}
-
+  
         <button onClick={() => setIsFullscreen(!isFullscreen)} className="corner-button">
           {isFullscreen ? "🔽" : "⛶"}
         </button>
-
+  
         <div className="music-menu-container">
           <button onClick={() => setShowMusicMenu(!showMusicMenu)} className="corner-button">
             🎵
@@ -81,7 +82,7 @@ function Home() {
           )}
         </div>
       </div>
-
+  
       {musicSource === "spotify" ? (
         spotifyToken ? (
           <SpotifyPlayer />

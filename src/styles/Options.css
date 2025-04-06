@@ -40,6 +40,7 @@
 .active-tab {
   background-color: #02a102;
   font-weight: bold;
+  font-family: "Playwrite MX Guides", cursive;
 }
 
 .settings-container {

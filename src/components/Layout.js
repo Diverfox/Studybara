@@ -1,7 +1,8 @@
 import { useContext, useEffect } from "react";
 import { SettingsContext } from "../context/SettingsContext";
-import fondoChill from "../assets/images/fondochill.jpg";
-
+import Sidebar from "./Sidebar";
+import "../styles/Layout.css";
+import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   const { background } = useContext(SettingsContext);
@@ -13,10 +14,15 @@ const Layout = () => {
     document.body.style.backgroundRepeat = "no-repeat";
     document.body.style.backgroundAttachment = "fixed";
   }, [background]);
-  
-  
 
-  return <></>; // No renderiza nada visible, solo cambia el fondo
+  return (
+    <div className="layout-container">
+      <Sidebar />
+      <div className="layout-content">
+        <Outlet /> {/* Aquí se renderiza Home o Materias */}
+      </div>
+    </div>
+  );
 };
 
 export default Layout;

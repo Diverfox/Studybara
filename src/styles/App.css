@@ -1,4 +1,6 @@
 /* Paleta de colores oscuros mejorada */
+
+
 :root {
   --primary-bg: #1e1e1e;
   --secondary-bg: #252525;
@@ -12,7 +14,7 @@ body {
   background: var(--primary-bg) url("../assets/images/fondochill.jpg") no-repeat center center fixed;
   background-size: cover;
   color: var(--text-color);
-  font-family: 'Arial', sans-serif;
+  font-family: "Playwrite MX Guides", cursive;
   margin: 0;
   padding: 0;
 }

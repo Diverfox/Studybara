@@ -1,4 +1,5 @@
 /* Reset básico para mejorar la consistencia */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -38,8 +39,7 @@ button:hover {
 }
 
 code {
-  font-family: "Source Code Pro", Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: "Playwrite MX Guides", cursive;
 }
 
 /* Estilos para el contenedor principal */
