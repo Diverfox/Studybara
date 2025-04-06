@@ -1,7 +1,8 @@
-.opciones-overlay { 
+/* Overlay de opciones */
+.opciones-overlay {
   position: fixed;
-  bottom: 0px;
-  right: 0px;
+  bottom: 0;
+  right: 0;
   width: auto;
   height: auto;
   display: flex;
@@ -11,14 +12,15 @@
   padding: 20px;
 }
 
+/* Modal principal */
 .opciones-modal {
-  background: rgba(255, 192, 203, 0.07);
+  background: rgba(44, 44, 44, 0.897);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  padding: 20px;
-  border-radius: 16px;
+  padding: 30px 25px 20px 25px;
+  border-radius: 15px;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(255, 192, 203, 0.25);
+  box-shadow: 0 4px 10px rgba(255, 192, 203, 0.3);
   max-width: 400px;
   width: 90%;
   position: relative;
@@ -27,7 +29,32 @@
   border: 1px solid rgba(255, 182, 193, 0.3);
 }
 
-/* Tabs superiores */
+/* Título del modal */
+.opciones-modal h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+/* Botón cerrar */
+.close-button {
+  margin-bottom: 20px;
+  padding: 8px 18px;
+  background-color: #ffccd5;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background-color: #ffb6c1;
+  transform: scale(1.05);
+}
+
+/* Tabs */
 .tabs-container {
   display: flex;
   justify-content: center;
@@ -58,7 +85,7 @@
   font-family: "Playwrite MX Guides", cursive;
 }
 
-/* Contenido de configuraciones */
+/* Contenido interno */
 .settings-container {
   text-align: left;
   color: #ffe8ec;
@@ -66,6 +93,7 @@
   line-height: 1.6;
 }
 
+/* Inputs y selects */
 .general-settings label {
   display: block;
   margin-bottom: 8px;
@@ -101,4 +129,37 @@
   outline: none;
   border: 1px solid #ffb6c1;
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Sidebar con blur */
+.sidebar {
+  background: rgba(30, 30, 30, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(255, 192, 203, 0.2);
+  color: #ffd6e0;
+  font-family: "Playwrite MX Guides", cursive;
+}
+
+.sidebar button,
+.sidebar a {
+  background-color: rgba(255, 204, 213, 0.1);
+  border: 1px solid #ffccd5;
+  color: #ffccd5;
+  padding: 8px 16px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover,
+.sidebar button:hover {
+  background-color: #ffb6c1;
+  color: #1a1a1a;
+  transform: scale(1.05);
 }

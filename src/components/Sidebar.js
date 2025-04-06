@@ -15,18 +15,13 @@ function Sidebar() {
         <button onClick={() => setIsOpen(false)} className="close-sidebar">
           ✖
         </button>
-        <h2 className="sidebar-title">Menu</h2>
-        <ul className="sidebar-menu">
-          <li>
-            <Link to="/" className="sidebar-link">🏠 Inicio</Link>
-          </li>
-          <li>
-            <Link to="/materias" className="sidebar-link">📚 Materias</Link>
-          </li>
-          <li className="sidebar-link disabled">📅 Calendar</li>
-          <li className="sidebar-link">✨ Capi-IA</li>
-          <li className="sidebar-link">👤 User</li>
-        </ul>
+
+        <h2>Menu</h2>
+
+        <button className="menu-item">🏠 Inicio</button>
+        <button className="menu-item">🧾 Materias</button>
+        <button className="menu-item">✨ Capi-IA</button>
+        <button className="menu-item">🧍‍♂️ User</button>
       </div>
 
       {isOpen && <div className="backdrop" onClick={() => setIsOpen(false)} />}

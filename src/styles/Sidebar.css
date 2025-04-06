@@ -91,3 +91,24 @@
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 1000;
 }
+
+.sidebar button,
+.sidebar a {
+  background-color: rgba(255, 204, 213, 0.1);
+  border: 1px solid #ffccd5;
+  color: #ffccd5;
+  padding: 8px 16px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.sidebar button:hover,
+.sidebar a:hover {
+  background-color: #ffb6c1;
+  color: #1a1a1a;
+  transform: scale(1.05);
+}
