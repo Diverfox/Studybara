@@ -1,13 +1,10 @@
-/* Paleta de colores oscuros mejorada */
-
-
 :root {
-  --primary-bg: #1e1e1e;
-  --secondary-bg: #252525;
-  --accent-color: #ff4f4f;
-  --text-color: #e0e0e0;
-  --link-color: #61dafb;
-  --hover-link-color: #ff9f9f;
+  --primary-bg: #1e1e1e;         /* Fondo principal: negro grisáceo */
+  --secondary-bg: #2a2a2a;       /* Fondo secundario: un poco más claro */
+  --accent-color: #ffc0cb;       /* Toque rosado pastel */
+  --text-color: #f0f0f0;         /* Texto principal en gris claro */
+  --link-color: #ffc0cb;         /* Link rosado suave */
+  --hover-link-color: #f7b6b6;   /* Hover link rosado clarito */
 }
 
 body {
@@ -45,7 +42,7 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: var(--text-color);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .App-link {

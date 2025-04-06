@@ -1,5 +1,4 @@
 /* Reset básico para mejorar la consistencia */
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,47 +11,48 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f4f4f4; /* Color de fondo claro para evitar fatiga visual */
-  color: #f8f8f8; /* Color de texto principal */
+  background-color: #1e1e1e;
+  color: #f0f0f0;
   min-height: 100vh;
   display: block;
-  background-image: url("../assets/images/fondochill.jpg"); /* Ruta de la imagen */
-  background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-image: url("../assets/images/fondochill.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 button {
-  background-color: #1db954; /* Color verde de Spotify */
-  color: white;
+  background-color: #ff8ea3; /* Rosado pastel */
+  color: #1e1e1e;
   border: none;
   padding: 8px 15px;
   font-size: 16px;
-  border-radius:10px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s ease;
   margin: 2px;
 }
 
 button:hover {
-  background-color: #17a74b;
+  background-color: #ff6f90;
 }
 
 code {
   font-family: "Playwrite MX Guides", cursive;
 }
 
-/* Estilos para el contenedor principal */
+/* Contenedor principal */
 .container {
   max-width: 800px;
   width: 90%;
-  background: white;
+  background: rgba(40, 40, 40, 0.9);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(255, 192, 203, 0.2);
+  color: #f0f0f0;
 }
 
-/* Estilos para centrar el reproductor de Spotify */
+/* Centrado del reproductor */
 .spotify-player {
   width: 100%;
   max-width: 600px;
@@ -61,33 +61,31 @@ code {
   overflow: hidden;
 }
 
-
+/* Contenedor flotante Spotify */
 .spotify-container {
   position: fixed !important;
   bottom: 20px !important;
-  left: 20px !important; /* Mueve el botón a la esquina inferior izquierda */
-  background-color: #000;
+  left: 20px !important;
+  background-color: #111;
   border-radius: 10px;
   padding: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  z-index: 9999 !important; /* Asegura que esté sobre otros elementos */
+  box-shadow: 0px 4px 6px rgba(255, 192, 203, 0.3);
+  z-index: 9999 !important;
 }
-
-
 
 .spotify-iframe {
   border-radius: 10px;
 }
 
-
+/* Botón de login */
 .spotify-login-btn {
-  position: fixed; 
-  bottom: 20px; 
-  left: 10%; 
-  transform: translateX(-50%); 
+  position: fixed;
+  bottom: 20px;
+  left: 10%;
+  transform: translateX(-50%);
   padding: 10px 20px;
-  background-color: #1DB954;
-  color: white;
+  background-color: #ff8ea3;
+  color: #1e1e1e;
   text-decoration: none;
   font-weight: bold;
   border-radius: 25px;
@@ -95,10 +93,10 @@ code {
 }
 
 .spotify-login-btn:hover {
-  background-color: #1aa34a;
+  background-color: #ff6f90;
 }
 
-/* Estilos para los botones en la esquina inferior derecha */
+/* Botones inferiores derecho */
 .corner-buttons-container {
   position: fixed;
   bottom: 20px;
@@ -112,14 +110,18 @@ code {
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
-  border: 1px solid #0ceb5a;
-  background-color: #1DB954;
+  border: 1px solid #ff8ea3;
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  transition: background 0.3s ease;
 }
 
 .corner-button:hover {
-  background-color: #1aa34a;
+  background-color: #ff6f90;
+  color: #1e1e1e;
 }
 
+/* Header superior */
 .home-header {
   position: absolute;
   top: 20%;
@@ -129,21 +131,25 @@ code {
 }
 
 .logo {
-  width: 100px; /* Ajusta el tamaño según necesites */
+  width: 100px;
   height: auto;
   margin-right: 10px;
   border-radius: 10%;
+  filter: drop-shadow(0 0 4px #ff8ea3);
 }
 
 .title {
   font-size: 26px;
   font-weight: bold;
+  color: #ffccd5;
+  text-shadow: 1px 1px 2px rgba(255, 192, 203, 0.3);
 }
 
+/* Temporizador centrado */
 .timer-container {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centra verticalmente */
-  align-items: center; /* Centra horizontalmente */
-  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

@@ -1,39 +1,53 @@
-import React, { useContext } from "react";
-import { SettingsContext } from "../context/SettingsContext";
+import React, { useState } from "react";
 
-const GeneralSettings = () => {
-  const { focusTime, setFocusTime, breakTime, setBreakTime, background, setBackground } =
-    useContext(SettingsContext);
+function GeneralSettings({ setFocusTime, setBreakTime }) {
+  const [focus, setFocus] = useState(25);
+  const [breakTime, setBreak] = useState(5);
+  const [background, setBackground] = useState("default.jpg");
 
-  const backgrounds = ["default.jpg", "forest.jpg", "ocean.jpg", "city.jpg", "mountains.jpg"];
+  const handleFocusChange = (e) => {
+    const value = parseInt(e.target.value);
+    setFocus(value);
+    setFocusTime(value);
+  };
+
+  const handleBreakChange = (e) => {
+    const value = parseInt(e.target.value);
+    setBreak(value);
+    setBreakTime(value);
+  };
+
+  const handleBackgroundChange = (e) => {
+    setBackground(e.target.value);
+    // Aquí puedes usar una función prop para cambiar el fondo si la tienes
+  };
 
   return (
-    <div>
-      <h3>Time</h3>
-      <label>Focus</label>
-      <input
-        type="number"
-        value={focusTime / 60}
-        onChange={(e) => setFocusTime(e.target.value * 60)}
-      />
+    <div className="general-settings">
+      <label>Time</label>
+      <div className="time-group">
+        <input
+          type="number"
+          value={focus}
+          onChange={handleFocusChange}
+          placeholder="Focus"
+        />
+        <input
+          type="number"
+          value={breakTime}
+          onChange={handleBreakChange}
+          placeholder="Break"
+        />
+      </div>
 
-      <label>Break</label>
-      <input
-        type="number"
-        value={breakTime / 60}
-        onChange={(e) => setBreakTime(e.target.value * 60)}
-      />
-
-      <h3>Background</h3>
-      <select value={background} onChange={(e) => setBackground(e.target.value)}>
-        {backgrounds.map((bg) => (
-          <option key={bg} value={bg}>
-            {bg}
-          </option>
-        ))}
+      <label>Background</label>
+      <select value={background} onChange={handleBackgroundChange}>
+        <option value="default.jpg">default.jpg</option>
+        <option value="stars.jpg">stars.jpg</option>
+        <option value="forest.jpg">forest.jpg</option>
       </select>
     </div>
   );
-};
+}
 
 export default GeneralSettings;
