@@ -3,7 +3,6 @@ import Timer from "../components/Timer";
 import OptionsModal from "../components/OptionsModal";
 import SpotifyPlayer from "../components/SpotifyPlayer";
 import YouTubePlayer from "../components/YouTubePlayer";
-import logo from "../assets/images/coffee-bara-capybara.gif";
 import "../styles/Home.css";
 import { loginUrl as spotifyLoginUrl, getTokenFromUrl as getSpotifyToken, getStoredToken as getStoredSpotifyToken } from "../utils/Spotify.js";
 import { youtubeLoginUrl, getYouTubeTokenFromUrl, getStoredYouTubeToken, youtubeLogout } from "../utils/YouTube.js";
@@ -43,12 +42,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="home-container">
-      <div className="home-header">
-        <img src={logo} alt="Studybara Logo" className="logo" />
-        <h1 className="title">Studybara</h1>
-      </div>
-  
+    <>
       <Timer focusTime={focusTime} breakTime={breakTime} />
   
       {showModal && (
@@ -99,8 +93,9 @@ function Home() {
           <a href={youtubeLoginUrl} className="youtube-login-btn">Iniciar sesión con YouTube</a>
         )
       )}
-    </div>
+    </>
   );
+  
 }
 
 export default Home;

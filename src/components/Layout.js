@@ -1,10 +1,12 @@
 import { useContext, useEffect } from "react";
 import { SettingsContext } from "../context/SettingsContext";
 import Sidebar from "./Sidebar";
-import "../styles/Layout.css";
 import { Outlet } from "react-router-dom";
+import "../styles/Layout.css";
+import capybaraGif from "../assets/images/coffee-bara-capybara.gif";
 
-const Layout = () => {
+
+const Layout = ({ children }) => {
   const { background } = useContext(SettingsContext);
 
   useEffect(() => {
@@ -16,12 +18,25 @@ const Layout = () => {
   }, [background]);
 
   return (
-    <div className="layout-container">
+    <>
       <Sidebar />
-      <div className="layout-content">
-        <Outlet /> {/* Aquí se renderiza Home o Materias */}
+
+      {/* Contenedor general con margen izquierdo para que no choque con el sidebar */}
+      <div className="ml-12 flex flex-col items-center text-white">
+
+        {/* Header centrado con logo y título grande */}
+        <div className="layout-header">
+          <img src={capybaraGif} alt="Logo Studybara" className="layout-logo" />
+          <h1 className="layout-title">StudyBara</h1>
+        </div>
+
+
+        {/* Contenido principal, ya sea children o rutas */}
+        <div className="w-full flex justify-center">
+          {children ? children : <Outlet />}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

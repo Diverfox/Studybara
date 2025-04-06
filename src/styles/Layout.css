@@ -1,4 +1,4 @@
-.layout-container {
+  .layout-container {
     display: flex;
     height: 100vh;
   }
@@ -8,5 +8,33 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+  }
+  
+  .layout-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* Espacio entre el gif y el texto */
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .layout-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .layout-logo {
+    height: 8rem; /* Equivale a h-12 en Tailwind */
+  }
+  
+  .layout-title {
+    font-size: 3rem; /* Equivale a text-5xl */
+    font-weight: 800; /* Equivale a font-extrabold */
+    color: white; /* Asegura que el texto sea visible */
   }
   
