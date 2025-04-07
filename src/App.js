@@ -6,6 +6,8 @@ import Materias from "./pages/Materias";
 import "./styles/App.css"; // Asegúrate de importar el CSS
 
 function App() {
+
+  console.log("App cargada");
   return (
     <SettingsProvider>
       <Router>
