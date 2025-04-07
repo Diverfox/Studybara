@@ -11,11 +11,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #1e1e1e;
-  color: #f0f0f0;
   min-height: 100vh;
   display: block;
-  background-image: url("../assets/images/fondochill.jpg");
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -34,7 +32,7 @@ button {
 }
 
 button:hover {
-  background-color: #ff6f90;
+  background-color: #ffffff;
 }
 
 code {
@@ -151,5 +149,4 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
