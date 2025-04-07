@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Studybara/static/css/main.1ef664ce.css",
-    "main.js": "/Studybara/static/js/main.c3e664da.js",
+    "main.js": "/Studybara/static/js/main.c428a571.js",
     "static/js/453.18fc0628.chunk.js": "/Studybara/static/js/453.18fc0628.chunk.js",
     "static/media/fondochill.jpg": "/Studybara/static/media/fondochill.2d5eab6b68c269e14e2c.jpg",
     "static/media/coffee-bara-capybara.gif": "/Studybara/static/media/coffee-bara-capybara.8cabdfd914777ccea431.gif",
     "index.html": "/Studybara/index.html",
     "main.1ef664ce.css.map": "/Studybara/static/css/main.1ef664ce.css.map",
-    "main.c3e664da.js.map": "/Studybara/static/js/main.c3e664da.js.map",
+    "main.c428a571.js.map": "/Studybara/static/js/main.c428a571.js.map",
     "453.18fc0628.chunk.js.map": "/Studybara/static/js/453.18fc0628.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1ef664ce.css",
-    "static/js/main.c3e664da.js"
+    "static/js/main.c428a571.js"
   ]
 }
