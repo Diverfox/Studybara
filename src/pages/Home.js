@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Timer from "../components/Timer";
 import OptionsModal from "../components/OptionsModal";
-import SpotifyPlayer from "../components/SpotifyPlayer";
+import SpotifyPlayer from "../components/spotifyPlayer";
 import YouTubePlayer from "../components/YouTubePlayer";
 import "../styles/Home.css";
 import { loginUrl as spotifyLoginUrl, getTokenFromUrl as getSpotifyToken, getStoredToken as getStoredSpotifyToken } from "../utils/Spotify.js";
