@@ -1,0 +1,165 @@
+/* Overlay de opciones */
+.opciones-overlay {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* Modal principal */
+.opciones-modal {
+  background: rgba(44, 44, 44, 0.897);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 30px 25px 20px 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(255, 192, 203, 0.3);
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  color: #ffdce5;
+  font-family: "Playwrite MX Guides", cursive;
+  border: 1px solid rgba(255, 182, 193, 0.3);
+}
+
+/* Título del modal */
+.opciones-modal h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+/* Botón cerrar */
+.close-button {
+  margin-bottom: 20px;
+  padding: 8px 18px;
+  background-color: #ffccd5;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background-color: #ffb6c1;
+  transform: scale(1.05);
+}
+
+/* Tabs */
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.tab {
+  padding: 10px 20px;
+  background-color: rgba(255, 204, 213, 0.2);
+  border: 1px solid #ffccd5;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #ffccd5;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.tab:hover {
+  background-color: rgba(255, 204, 213, 0.4);
+  transform: scale(1.05);
+}
+
+.active-tab {
+  background-color: #ffb6c1;
+  color: #1a1a1a;
+  font-weight: bold;
+  font-family: "Playwrite MX Guides", cursive;
+}
+
+/* Contenido interno */
+.settings-container {
+  text-align: left;
+  color: #ffe8ec;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Inputs y selects */
+.general-settings label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #ffccd5;
+  font-size: 1rem;
+}
+
+.time-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.general-settings input,
+.general-settings select {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffd6e0;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 2px 6px rgba(255, 182, 193, 0.15);
+  margin-bottom: 15px;
+}
+
+.general-settings input:focus,
+.general-settings select:focus {
+  outline: none;
+  border: 1px solid #ffb6c1;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Sidebar con blur */
+.sidebar {
+  background: rgba(30, 30, 30, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(255, 192, 203, 0.2);
+  color: #ffd6e0;
+  font-family: "Playwrite MX Guides", cursive;
+}
+
+.sidebar button,
+.sidebar a {
+  background-color: rgba(255, 204, 213, 0.1);
+  border: 1px solid #ffccd5;
+  color: #ffccd5;
+  padding: 8px 16px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover,
+.sidebar button:hover {
+  background-color: #ffb6c1;
+  color: #1a1a1a;
+  transform: scale(1.05);
+}

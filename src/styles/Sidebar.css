@@ -1,0 +1,114 @@
+.menu-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #1c1c1c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1001;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 260px;
+  height: 100vh;
+  background-color: #121212; /* fondo negro elegante */
+  color: #fff;
+  padding: 30px 20px;
+  z-index: 1100;
+  transition: left 0.3s ease-in-out;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.6);
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.close-sidebar {
+  align-self: flex-end;
+  background-color: #ffc0cb; /* rosado pastel */
+  color: #121212;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.sidebar-title {
+  font-size: 26px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #ffc0cb; /* título rosadito */
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar-link {
+  font-size: 18px;
+  color: #eeeeee;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffc0cb;
+}
+
+.sidebar-link.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.sidebar button,
+.sidebar a {
+  background-color: rgba(255, 204, 213, 0.1);
+  border: 1px solid #ffccd5;
+  color: #ffccd5;
+  padding: 8px 16px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.sidebar button:hover,
+.sidebar a:hover {
+  background-color: #ffb6c1;
+  color: #1a1a1a;
+  transform: scale(1.05);
+}

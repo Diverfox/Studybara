@@ -1,0 +1,65 @@
+:root {
+  --primary-bg: #1e1e1e;         /* Fondo principal: negro grisáceo */
+  --secondary-bg: #2a2a2a;       /* Fondo secundario: un poco más claro */
+  --accent-color: #ffc0cb;       /* Toque rosado pastel */
+  --text-color: #f0f0f0;         /* Texto principal en gris claro */
+  --link-color: #ffc0cb;         /* Link rosado suave */
+  --hover-link-color: #f7b6b6;   /* Hover link rosado clarito */
+}
+
+body {
+  background: var(--primary-bg) url("../assets/images/fondochill.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text-color);
+  font-family: "Playwrite MX Guides", cursive;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: var(--secondary-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: var(--text-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.App-link {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.App-link:hover {
+  color: var(--hover-link-color);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
