@@ -1,15 +1,14 @@
 :root {
-  --primary-bg: #1e1e1e;         /* Fondo principal: negro grisáceo */
-  --secondary-bg: #2a2a2a;       /* Fondo secundario: un poco más claro */
   --accent-color: #ffc0cb;       /* Toque rosado pastel */
   --text-color: #f0f0f0;         /* Texto principal en gris claro */
   --link-color: #ffc0cb;         /* Link rosado suave */
   --hover-link-color: #f7b6b6;   /* Hover link rosado clarito */
+  background-image: url("../assets/images/fondochill.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 body {
-  background: var(--primary-bg) url("../assets/images/fondochill.jpg") no-repeat center center fixed;
-  background-size: cover;
   color: var(--text-color);
   font-family: "Playwrite MX Guides", cursive;
   margin: 0;
