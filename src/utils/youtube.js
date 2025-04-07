@@ -2,7 +2,7 @@ const CLIENT_ID = "1053553813172-3r0i00dkb2sqc5bf7fpghv39plp03l2e.apps.googleuse
 const API_KEY = "AIzaSyCUitH3vc2qx5Vo4AVOr-tZneDM0zYfXeA"; // Reemplaza con tu API Key de YouTube
 const AUTH_ENDPOINT = "https://accounts.google.com/o/oauth2/v2/auth";
 const RESPONSE_TYPE = "token";
-const REDIRECT_URI = "http://localhost:3000";
+const REDIRECT_URI = "https://kevinzorro.github.io/Studybara";
 
 // Permisos requeridos para YouTube
 const SCOPES = [
