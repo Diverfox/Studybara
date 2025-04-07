@@ -34,7 +34,7 @@ body {
 }
 
 .App-header {
-  background-color: var(--secondary-bg);
+  background-color: transparent;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
