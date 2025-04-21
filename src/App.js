@@ -1,26 +1,28 @@
 import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { SettingsProvider } from "./context/SettingsContext";
-import Layout from "./components/Layout";  // Importa Layout
+import { AuthProvider } from "./context/AuthContext"; // Importa AuthProvider
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Materias from "./pages/Materias";
-import "./styles/App.css"; // Asegúrate de importar el CSS
+import DetalleMateria from "./components/DetalleMateria";
+import "./styles/App.css";
 
 function App() {
-
-  console.log("App cargada");
   return (
     <SettingsProvider>
-      <Router>
-      <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/materias" element={<Materias />} />
-      </Route>
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
-  </Router>
-</SettingsProvider>
-
+      <AuthProvider> {/* Asegúrate de envolver toda la aplicación con AuthProvider */}
+        <Router>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/materias" element={<Materias />} />
+              <Route path="/materias/:id" element={<DetalleMateria />} />
+            </Route>
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </SettingsProvider>
   );
 }
 
