@@ -1,46 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { SettingsContext } from "../context/SettingsContext";
 
-function GeneralSettings({ setFocusTime, setBreakTime }) {
-  const [focus, setFocus] = useState(25);
-  const [breakTime, setBreak] = useState(5);
-  const [background, setBackground] = useState("default.jpg");
+function GeneralSettings() {
+  const {
+    setFocusTime,
+    setBreakTime,
+    focusTime,
+    breakTime,
+    background,
+    setBackground,
+  } = useContext(SettingsContext);
+
+  const [focus, setFocus] = useState(focusTime / 60); // Convertir a minutos para mostrar
+  const [breakDur, setBreakDur] = useState(breakTime / 60); // Convertir a minutos
 
   const handleFocusChange = (e) => {
     const value = parseInt(e.target.value);
     setFocus(value);
-    setFocusTime(value);
+    setFocusTime(value * 60); // Guardar en segundos
   };
 
   const handleBreakChange = (e) => {
     const value = parseInt(e.target.value);
-    setBreak(value);
-    setBreakTime(value);
+    setBreakDur(value);
+    setBreakTime(value * 60); // Guardar en segundos
   };
 
   const handleBackgroundChange = (e) => {
     setBackground(e.target.value);
-    // Aquí puedes usar una función prop para cambiar el fondo si la tienes
   };
 
   return (
     <div className="general-settings">
-      <label>Time</label>
+      <label>Tiempo</label>
       <div className="time-group">
         <input
           type="number"
           value={focus}
           onChange={handleFocusChange}
-          placeholder="Focus"
+          placeholder="Enfoque (min)"
         />
         <input
           type="number"
-          value={breakTime}
+          value={breakDur}
           onChange={handleBreakChange}
-          placeholder="Break"
+          placeholder="Descanso (min)"
         />
       </div>
 
-      <label>Background</label>
+      <label>Fondo</label>
       <select value={background} onChange={handleBackgroundChange}>
         <option value="default.jpg">default.jpg</option>
         <option value="stars.jpg">stars.jpg</option>
