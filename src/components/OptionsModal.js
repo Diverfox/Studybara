@@ -4,7 +4,7 @@ import ClockSettings from "./ClockSettings";
 import FeedbackSettings from "./FeedbackSettings";
 import "../styles/Options.css";
 
-function OptionsModal({ setFocusTime, setBreakTime, onClose }) {
+function OptionsModal({ onClose }) {
   const [activeTab, setActiveTab] = useState("general");
 
   const renderActiveTab = () => {

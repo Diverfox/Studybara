@@ -1,29 +1,61 @@
 import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { SettingsProvider } from "./context/SettingsContext";
-import { AuthProvider } from "./context/AuthContext"; // Importa AuthProvider
+import { useContext } from "react";
+import { ModalProvider, SettingsProvider } from "./context/SettingsContext";
+import { AuthProvider, AuthContext } from "./context/AuthContext";
+
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Materias from "./pages/Materias";
 import DetalleMateria from "./components/DetalleMateria";
+
 import "./styles/App.css";
+
+// Componente de protección de rutas
+const ProtectedRoute = ({ children }) => {
+  const { user } = useContext(AuthContext);
+  if (!user) {
+    return <Navigate to="/" />;
+  }
+  return children;
+};
 
 function App() {
   return (
-    <SettingsProvider>
-      <AuthProvider> {/* Asegúrate de envolver toda la aplicación con AuthProvider */}
-        <Router>
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/materias" element={<Materias />} />
-              <Route path="/materias/:id" element={<DetalleMateria />} />
-            </Route>
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </Router>
-      </AuthProvider>
-    </SettingsProvider>
+    <AuthProvider> {/* Autenticación primero porque es usada por todo */}
+      <SettingsProvider> {/* Configuración general */}
+        <ModalProvider> {/* Modal puede depender de Settings */}
+          <Router>
+            <Routes>
+              <Route element={<Layout />}>
+                <Route path="/" element={<Home />} />
+
+                <Route
+                  path="/materias"
+                  element={
+                    <ProtectedRoute>
+                      <Materias />
+                    </ProtectedRoute>
+                  }
+                />
+
+                <Route
+                  path="/materias/:id"
+                  element={
+                    <ProtectedRoute>
+                      <DetalleMateria />
+                    </ProtectedRoute>
+                  }
+                />
+              </Route>
+
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </Router>
+        </ModalProvider>
+      </SettingsProvider>
+    </AuthProvider>
   );
 }
+
 
 export default App;

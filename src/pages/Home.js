@@ -54,12 +54,6 @@ function Home() {
       )}
   
       <div className="corner-buttons-container">
-        {!showModal && (
-          <button onClick={() => setShowModal(true)} className="corner-button">
-            ⚙
-          </button>
-        )}
-  
         <button onClick={() => setIsFullscreen(!isFullscreen)} className="corner-button">
           {isFullscreen ? "🔽" : "⛶"}
         </button>

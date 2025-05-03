@@ -1,6 +1,7 @@
-import React, { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 
 export const SettingsContext = createContext();
+export const ModalContext = createContext();
 
 export const SettingsProvider = ({ children }) => {
   const [focusTime, setFocusTime] = useState(25 * 60); // en segundos
@@ -16,3 +17,15 @@ export const SettingsProvider = ({ children }) => {
     </SettingsContext.Provider>
   );
 };
+
+export const ModalProvider = ({ children }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  return (
+    <ModalContext.Provider value={{ showModal, setShowModal }}>
+      {children}
+    </ModalContext.Provider>
+  );
+};
+
+export const useModal = () => useContext(ModalContext);

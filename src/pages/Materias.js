@@ -6,7 +6,7 @@ import {
   addDoc,
   query,
   where,
-  onSnapshot
+  onSnapshot,
 } from "firebase/firestore";
 import { auth, db } from "../firebase-config";
 
@@ -18,7 +18,7 @@ const Materias = () => {
   // Escuchar las materias del usuario logueado en tiempo real
   useEffect(() => {
     if (!user) return;
-  
+
     // Cambia 'default' a 'materias'
     const q = query(collection(db, "materias"), where("uid", "==", user.uid));
     const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -28,7 +28,7 @@ const Materias = () => {
       });
       setMaterias(lista);
     });
-  
+
     return () => unsubscribe(); // Limpieza
   }, [user]);
 
@@ -39,12 +39,13 @@ const Materias = () => {
 
     const nueva = {
       nombre, // Usando el nombre ingresado por el usuario
-      contenido: "<p>Contenido de la materia con <strong>formato</strong> <em>enriquecido</em></p>",
+      contenido:
+        "<p>Contenido de la materia con <strong>formato</strong> <em>enriquecido</em></p>",
       notas: [],
       tareas: [],
       imagen: null,
       uid: user.uid, // Usando el UID del usuario logueado
-      createdAt: new Date() // Usando la fecha actual
+      createdAt: new Date(), // Usando la fecha actual
     };
 
     try {
@@ -79,6 +80,11 @@ const Materias = () => {
             <p>
               ✅ Tareas: {m.tareas.filter((t) => t.completada).length}/
               {m.tareas.length}
+            </p>
+            <p>
+              📅 Próxima:{" "}
+              {m.tareas.find((t) => !t.completada)?.fechaEntrega ||
+                "Sin pendientes"}
             </p>
           </div>
         ))}
