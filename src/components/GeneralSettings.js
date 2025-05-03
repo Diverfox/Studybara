@@ -16,15 +16,20 @@ function GeneralSettings() {
 
   const handleFocusChange = (e) => {
     const value = parseInt(e.target.value);
-    setFocus(value);
-    setFocusTime(value * 60); // Guardar en segundos
+    if (value >= 1 && value <= 99) {
+      setFocus(value);
+      setFocusTime(value * 60);
+    }
   };
-
+  
   const handleBreakChange = (e) => {
     const value = parseInt(e.target.value);
-    setBreakDur(value);
-    setBreakTime(value * 60); // Guardar en segundos
+    if (value >= 1 && value <= 60) {
+      setBreakDur(value);
+      setBreakTime(value * 60);
+    }
   };
+  
 
   const handleBackgroundChange = (e) => {
     setBackground(e.target.value);
@@ -39,12 +44,16 @@ function GeneralSettings() {
           value={focus}
           onChange={handleFocusChange}
           placeholder="Enfoque (min)"
+          min={1}
+          max={99}
         />
         <input
           type="number"
           value={breakDur}
           onChange={handleBreakChange}
           placeholder="Descanso (min)"
+          min={1}
+          max={60}
         />
       </div>
 
