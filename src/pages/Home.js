@@ -18,31 +18,28 @@ function Home() {
   const [youtubeToken, setYouTubeToken] = useState(null);
 
   useEffect(() => {
-    // Manejo de sesión de Spotify
-    const storedSpotifyToken = getStoredSpotifyToken();
-    if (storedSpotifyToken) {
-      setSpotifyToken(storedSpotifyToken);
-    } else {
-      const _spotifyToken = getSpotifyToken();
-      if (_spotifyToken) {
-        setSpotifyToken(_spotifyToken);
-      }
+    // Primero intenta recuperar token del hash de la URL después del login con Spotify
+    const urlToken = getSpotifyToken(); // Internamente verifica y guarda si es válido
+    if (urlToken) {
+      console.log("Token obtenido de URL y guardado:", urlToken);
+      setSpotifyToken(urlToken);
+      return;
     }
-
-    // Manejo de sesión de YouTube
-    const storedYouTubeToken = getStoredYouTubeToken();
-    if (storedYouTubeToken) {
-      setYouTubeToken(storedYouTubeToken);
-    } else {
-      const _youtubeToken = getYouTubeTokenFromUrl();
-      if (_youtubeToken) {
-        setYouTubeToken(_youtubeToken);
-      }
+  
+    // Si no había token en la URL, revisa si hay uno válido en localStorage
+    const storedToken = getStoredSpotifyToken();
+    console.log("Token recuperado del storage:", storedToken);
+    if (storedToken) {
+      setSpotifyToken(storedToken);
     }
   }, []);
+  
+  
 
   return (
     <>
+    <p>Token de Spotify: {spotifyToken}</p>
+
       <Timer focusTime={focusTime} breakTime={breakTime} />
   
       {showModal && (
@@ -76,6 +73,7 @@ function Home() {
           <SpotifyPlayer />
         ) : (
           <a href={spotifyLoginUrl} className="spotify-login-btn">Iniciar sesión con Spotify</a>
+          
         )
       ) : (
         youtubeToken ? (

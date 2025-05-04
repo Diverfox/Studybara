@@ -22,21 +22,24 @@ export const loginUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}
 
 // Función para obtener el token de la URL y manejar su expiración
 export const getTokenFromUrl = () => {
-  const hash = window.location.hash.substring(1);
-  const params = new URLSearchParams(hash);
+  const hash = window.location.hash;
+  if (hash.includes("access_token")) {
+    // Guarda en localStorage antes de que React Router monte
+    const params = new URLSearchParams(hash.substring(1));
+    const _token = params.get("access_token");
+    const _expiresIn = params.get("expires_in");
   
-  const accessToken = params.get("access_token");
-  const expiresIn = params.get("expires_in");
-
-  if (accessToken) {
-    const expirationTime = Date.now() + expiresIn * 1000; // Guardar la expiración
-    localStorage.setItem("spotifyToken", accessToken);
-    localStorage.setItem("spotifyTokenExpiration", expirationTime);
-    window.location.hash = ""; // Limpia la URL
-    return accessToken;
+    localStorage.setItem("spotifyAccessToken", _token);
+    localStorage.setItem("spotifyTokenExpiry", Date.now() + _expiresIn * 1000);
+    
+    // Limpia el hash para que no se repita la lógica
+    window.location.hash = "";
   }
+
   return null;
 };
+
+
 
 // Función para verificar si el token sigue siendo válido
 export const getStoredToken = () => {

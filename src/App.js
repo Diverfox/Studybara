@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { ModalProvider, SettingsProvider } from "./context/SettingsContext";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
@@ -10,7 +10,6 @@ import DetalleMateria from "./components/DetalleMateria";
 
 import "./styles/App.css";
 
-// Componente de protección de rutas
 const ProtectedRoute = ({ children }) => {
   const { user } = useContext(AuthContext);
   if (!user) {
@@ -21,14 +20,13 @@ const ProtectedRoute = ({ children }) => {
 
 function App() {
   return (
-    <AuthProvider> {/* Autenticación primero porque es usada por todo */}
-      <SettingsProvider> {/* Configuración general */}
-        <ModalProvider> {/* Modal puede depender de Settings */}
+    <AuthProvider>
+      <SettingsProvider>
+        <ModalProvider>
           <Router>
             <Routes>
               <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
-
                 <Route
                   path="/materias"
                   element={
@@ -37,7 +35,6 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
-
                 <Route
                   path="/materias/:id"
                   element={
@@ -47,7 +44,6 @@ function App() {
                   }
                 />
               </Route>
-
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </Router>
@@ -56,6 +52,5 @@ function App() {
     </AuthProvider>
   );
 }
-
 
 export default App;
