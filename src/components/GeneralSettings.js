@@ -49,7 +49,7 @@ function GeneralSettings() {
         />
         <input
           type="number"
-          value={breakDur}
+          value={breakDur} 
           onChange={handleBreakChange}
           placeholder="Descanso (min)"
           min={1}
