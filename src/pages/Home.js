@@ -5,7 +5,7 @@ import SpotifyPlayer from "../components/SpotifyPlayer";
 import YouTubePlayer from "../components/YouTubePlayer";
 import "../styles/Home.css";
 import { loginUrl as spotifyLoginUrl, getTokenFromUrl as getSpotifyToken, getStoredToken as getStoredSpotifyToken } from "../utils/Spotify.js";
-import { youtubeLoginUrl,/* getYouTubeTokenFromUrl, getStoredYouTubeToken, */youtubeLogout } from "../utils/YouTube.js";
+import { youtubeLoginUrl, getYouTubeTokenFromUrl, getStoredYouTubeToken, youtubeLogout } from "../utils/YouTube.js";
 
 function Home() {
   const [focusTime, setFocusTime] = useState(25 * 60);
@@ -15,20 +15,17 @@ function Home() {
   const [musicSource, setMusicSource] = useState("spotify");
   const [showMusicMenu, setShowMusicMenu] = useState(false);
   const [spotifyToken, setSpotifyToken] = useState(null);
-  const [youtubeToken, /*setYouTubeToken*/] = useState(null);
+  const [youtubeToken, setYouTubeToken] = useState(null);
 
   useEffect(() => {
     // Primero intenta recuperar token del hash de la URL después del login con Spotify
     const urlToken = getSpotifyToken(); // Internamente verifica y guarda si es válido
     if (urlToken) {
-      console.log("Token obtenido de URL y guardado:", urlToken);
       setSpotifyToken(urlToken);
       return;
     }
-  
     // Si no había token en la URL, revisa si hay uno válido en localStorage
     const storedToken = getStoredSpotifyToken();
-    console.log("Token recuperado del storage:", storedToken);
     if (storedToken) {
       setSpotifyToken(storedToken);
     }
@@ -38,8 +35,6 @@ function Home() {
 
   return (
     <>
-    <p>Token de Spotify: {spotifyToken}</p>
-
       <Timer focusTime={focusTime} breakTime={breakTime} />
   
       {showModal && (

@@ -24,18 +24,16 @@ export const loginUrl = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}
 export const getTokenFromUrl = () => {
   const hash = window.location.hash;
   if (hash.includes("access_token")) {
-    // Guarda en localStorage antes de que React Router monte
     const params = new URLSearchParams(hash.substring(1));
     const _token = params.get("access_token");
     const _expiresIn = params.get("expires_in");
-  
-    localStorage.setItem("spotifyAccessToken", _token);
-    localStorage.setItem("spotifyTokenExpiry", Date.now() + _expiresIn * 1000);
-    
-    // Limpia el hash para que no se repita la lógica
-    window.location.hash = "";
-  }
 
+    localStorage.setItem("spotifyToken", _token);
+    localStorage.setItem("spotifyTokenExpiration", Date.now() + _expiresIn * 1000);
+    window.location.hash = "";
+
+    return _token;
+  }
   return null;
 };
 
