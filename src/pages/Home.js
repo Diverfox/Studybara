@@ -1,5 +1,3 @@
-// src/pages/Home.jsx
-
 import { useState, useEffect } from "react";
 import Timer from "../components/Timer";
 import OptionsModal from "../components/OptionsModal";
@@ -18,12 +16,11 @@ function Home() {
   const [breakTime, setBreakTime] = useState(5 * 60);
   const [showModal, setShowModal] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [musicSource, setMusicSource] = useState("spotify");
+  const [musicSource, setMusicSource] = useState(null); // null al inicio
   const [showMusicMenu, setShowMusicMenu] = useState(false);
   const [spotifyToken, setSpotifyToken] = useState(null);
 
   useEffect(() => {
-    // Obtenemos token de Spotify al cargar
     const urlToken = getSpotifyToken();
     if (urlToken) {
       setSpotifyToken(urlToken);
@@ -82,17 +79,20 @@ function Home() {
         </div>
       </div>
 
-      {musicSource === "spotify" ? (
-        spotifyToken ? (
-          <SpotifyPlayer />
-        ) : (
-          <a href={spotifyLoginUrl} className="spotify-login-btn">
-            Iniciar sesión con Spotify
-          </a>
-        )
-      ) : (
-        // Mostramos siempre el mini-player público de YouTube
-        <YouTubePlayer />
+      {(musicSource === "spotify" || musicSource === "youtube") && (
+        <div className="music-player-container">
+          {musicSource === "spotify" ? (
+            spotifyToken ? (
+              <SpotifyPlayer />
+            ) : (
+              <a href={spotifyLoginUrl} className="spotify-login-btn">
+                Iniciar sesión con Spotify
+              </a>
+            )
+          ) : (
+            <YouTubePlayer />
+          )}
+        </div>
       )}
     </>
   );
