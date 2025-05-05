@@ -1,12 +1,15 @@
+/*Home.css*/
+
 .corner-buttons-container {
   position: fixed;
-  bottom: 20px;
+  top: 20px; /* Cambiado de bottom a top */
   right: 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   z-index: 10;
 }
+
 
 .corner-button {
   background: rgba(255, 192, 203, 0.2); /* Rosado pastel translúcido */
@@ -33,8 +36,8 @@
 
 .music-menu {
   position: absolute;
-  right: 60px; /* Hacia la izquierda del botón 🎵 */
-  bottom: 0;
+  right: 60px;
+  top: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -43,8 +46,12 @@
   border-radius: 14px;
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  z-index: 11;
+  z-index: 12;
+  max-height: 100px;     /* Limita la altura */
+  overflow-y: auto;      /* Agrega scroll si es necesario */
 }
+
+ 
 
 
 .music-menu button {
@@ -60,5 +67,7 @@
 }
 
 .music-menu button:hover {
-  background: rgba(255, 192, 203, 0.2);
+  background: rgba(247, 144, 161, 0.2);
 }
+
+

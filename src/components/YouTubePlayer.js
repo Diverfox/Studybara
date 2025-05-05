@@ -1,6 +1,6 @@
 // src/components/YouTubePlayer.jsx
 import React, { useEffect, useState } from "react";
-import "../styles/YouTube.css";
+import "../styles/index.css";
 
 const LIVE_VIDEO_ID = "5RuM_n8lCRU";
 
