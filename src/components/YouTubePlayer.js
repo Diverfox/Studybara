@@ -1,46 +1,60 @@
-import React, { useState } from "react";
+// src/components/YouTubePlayer.jsx
+import React, { useEffect, useState } from "react";
 import "../styles/YouTube.css";
 
+const LIVE_VIDEO_ID = "5RuM_n8lCRU";
 
+export default function YouTubePlayer() {
+  const [isReady, setIsReady] = useState(false);
 
-const YouTubePlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(true);
+  useEffect(() => {
+    let player;
 
-  const togglePlay = () => {
-    const iframe = document.getElementById("youtube-iframe");
-    const player = iframe.contentWindow;
-    if (isPlaying) {
-      player.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
+    const createPlayer = () => {
+      console.log("▶️ Creando YT.Player…");
+      player = new window.YT.Player("yt-mini-player", {
+        videoId: LIVE_VIDEO_ID,
+        playerVars: {
+          autoplay: 1,
+          controls: 1,
+          modestbranding: 1,
+          mute: 0,
+        },
+        events: {
+          onReady: () => {
+            console.log("✅ YouTube listo");
+            setIsReady(true);
+          },
+          onError: (e) => {
+            console.error("❌ Error en YT.Player:", e);
+          },
+        },
+      });
+    };
+
+    // Si la API ya estaba cargada, crear inmediatamente
+    if (window.YT && window.YT.Player) {
+      console.log("⚡ API ya cargada, inicializando player directo");
+      createPlayer();
     } else {
-      player.postMessage('{"event":"command","func":"playVideo","args":""}', "*");
+      // Si no, inyectar el script y asignar el callback
+      console.log("⬇️ Inyectando script de IFrame API");
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.body.appendChild(tag);
+      window.onYouTubeIframeAPIReady = createPlayer;
     }
-    setIsPlaying(!isPlaying);
-  };
+
+    // Cleanup: destruir player al desmontar
+    return () => {
+      if (player && player.destroy) player.destroy();
+    };
+  }, []);
 
   return (
-    <div className="music-card">
-      <iframe
-        id="youtube-iframe"
-        width="560"
-        height="315"
-        src="https://www.youtube-nocookie.com/embed/bPG90gwE47M?enablejsapi=1&autoplay=1"
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-      ></iframe>
-      <div className="music-info">
-        <p className="music-title">lofi hip hop radio 🎵 beats to relax/study to</p>
-        <div className="music-controls">
-          <button>⏪</button>
-          <button onClick={togglePlay}>{isPlaying ? "⏸" : "▶"}</button>
-          <button>⏩</button>
-          <button>⋯</button>
-        </div>
-      </div>
+    <div className="mini-player-container">
+      <div id="yt-mini-player" />
+      {!isReady && <div className="loader">Cargando…</div>}
     </div>
   );
-};
-
-export default YouTubePlayer;
+}
