@@ -1,5 +1,12 @@
 /* Reset básico para mejorar la consistencia */
 /* Index.css */
+:root {
+  --text-color: #fefefe;
+  --accent-color: #ff8ea3;
+  --accent-color-hover: #ff6f90;
+  --background-blur: rgba(255, 192, 203, 0.15);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -25,7 +32,7 @@ code {
 
 /* Botón general */
 button {
-  background-color: #ff8ea3; /* Rosado pastel */
+  background-color: var(--accent-color);
   color: #1e1e1e;
   border: none;
   padding: 8px 15px;
@@ -34,21 +41,20 @@ button {
   cursor: pointer;
   transition: background 0.3s ease;
   margin: 2px;
+  box-shadow: 0 4px 6px rgba(255, 182, 193, 0.3);
 }
 
 button:hover {
-  background-color: #ffffff;
+  background-color: var(--accent-color-hover);
+  color: #fff;
 }
 
 /* Contenedor principal */
 .container {
-  max-width: 800px;
-  width: 90%;
-  background: rgba(40, 40, 40, 0.9);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(255, 192, 203, 0.2);
-  color: #f0f0f0;
+  background: rgba(40, 40, 40, 0.85);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(255, 192, 203, 0.25);
 }
 
 /* Reproductores */
@@ -91,20 +97,25 @@ button:hover {
 .spotify-login-btn {
   position: fixed;
   bottom: 20px;
-  left: 10%;
-  transform: translateX(-50%);
-  padding: 10px 20px;
-  background-color: #ff8ea3;
-  color: #1e1e1e;
-  text-decoration: none;
+  right: 20px; /* Cambiado de left a right */
+  padding: 10px 24px;
+  background: rgba(255, 142, 163, 0.2);
+  color: var(--text-color, #fff);
   font-weight: bold;
   border-radius: 25px;
-  transition: background 0.3s ease;
+  text-decoration: none;
+  border: 1px solid rgba(255, 192, 203, 0.5);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.4);
+  transition: all 0.3s ease;
 }
 
 .spotify-login-btn:hover {
-  background-color: #ff6f90;
+  background: rgba(255, 111, 144, 0.3);
+  transform: scale(1.05);
 }
+
+
 
 /* Botones en la esquina */
 .corner-buttons-container {
@@ -190,11 +201,13 @@ button:hover {
 }
 
 .title {
-  font-size: 26px;
+  font-size: 32px;
   font-weight: bold;
-  color: #ffccd5;
-  text-shadow: 1px 1px 2px rgba(255, 192, 203, 0.3);
+  color: #ffe3ea;
+  text-shadow: 2px 2px 6px rgba(255, 182, 193, 0.4);
+  animation: fadeInDown 1s ease-out;
 }
+
 
 /* Temporizador centrado */
 .timer-container {
@@ -202,4 +215,56 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.timer-container button {
+  background: rgba(255, 142, 163, 0.2);
+  color: var(--text-color, #fff);
+  border: 1px solid rgba(255, 192, 203, 0.5);
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 8px rgba(255, 182, 193, 0.3);
+}
+
+.timer-container button:hover {
+  background: rgba(255, 111, 144, 0.3);
+  transform: scale(1.05);
+}
+
+/* Estilo para el número del temporizador */
+.timer-display {
+  font-size: 72px; /* Tamaño grande */
+  font-weight: bold;
+  color: #ffe3ea;
+  text-shadow: 2px 2px 8px rgba(255, 182, 193, 0.5);
+  margin-bottom: 20px;
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow: 0 0 8px rgba(255, 182, 193, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 18px rgba(255, 182, 193, 0.8);
+  }
+}
+
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
