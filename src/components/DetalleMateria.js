@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import QuillEditor from './QuillEditor';
 import { db } from "../firebase-config";
+import "../styles/Materias.css";
 
 const DetalleMateria = () => {
   const { id } = useParams();
