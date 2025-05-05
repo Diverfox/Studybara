@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
+import "../styles/Materias.css";
+import "../styles/quill.css";
 
 export default function QuillEditor({ value, onChange }) {
   const editorRef = useRef(null);

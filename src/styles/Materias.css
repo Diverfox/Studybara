@@ -74,3 +74,48 @@
   border-radius: 14px;
   margin-bottom: 0.7rem;
 }
+
+
+.quill-editor-container {
+  background: rgba(255, 192, 203, 0.1); /* Rosado pastel translúcido */
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 16px rgba(255, 182, 193, 0.2);
+  color: white;
+}
+
+/* Estilo del contenido editable */
+.quill-editor-container .ql-editor {
+  color: white;
+  font-size: 1rem;
+  font-family: 'Comic Neue', sans-serif;
+  min-height: 200px;
+}
+
+/* Estilo del toolbar */
+.quill-editor-container .ql-toolbar {
+  background: rgba(255, 192, 203, 0.15);
+  border: none;
+  border-radius: 12px 12px 0 0;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(255, 182, 193, 0.15);
+}
+
+/* Área de edición */
+.quill-editor-container .ql-container {
+  background: transparent;
+  border: none;
+  border-radius: 0 0 12px 12px;
+}
+
+/* Botones del toolbar */
+.quill-editor-container .ql-toolbar button {
+  color: white;
+}
+
+.quill-editor-container .ql-toolbar .ql-picker {
+  color: white;
+}
+
